@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Doctor Dashboard</title>
+  <link rel="stylesheet" href="test.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <!-- 🔹 Logo Area -->
+      <div class="sidebar-logo">
+        <img src="name.svg" alt="Clinic Logo">
+       
+      </div>
+
+      <!-- Doctor Profile -->
+      <div class="profile">
+        <img src="d7.jpeg" alt="Doctor" class="profile-img">
+        <h3>Dr. Naman Jha</h3>
+        <p>Dentist</p>
+      </div>
+
+      <!-- Navigation Menu -->
+      <nav class="menu">
+        <a href="#" class="active">🏠 Dashboard</a>
+        <a href="#">📅 Schedule</a>
+        <a href="#">👥 Patients</a>
+        <a href="#">💬 Messages</a>
+        <a href="#">💊 Medicines</a>
+      </nav>
+
+      <a href="#" class="logout">🚪 Logout</a>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="topbar">
+        <h2>Dashboard</h2>
+        <div class="top-options">
+          <a href="#">🔔 Alert</a>
+          <a href="#">❔ Help</a>
+          <a href="#">⚙️ Settings</a>
+        </div>
+      </header>
+
+      <!-- Statistics Section -->
+      <section class="stats">
+        
+        <div class="stat-card">
+          <h4>Income</h4>
+          <p>$2,111</p>
+        </div>
+        <div class="stat-card">
+          <h4>Appointments</h4>
+          <p>211</p>
+        </div>
+        <div class="stat-card">
+          <h4>Treatments</h4>
+          <p>402</p>
+        </div>
+      </section>
+
+      <!-- Appointments Section -->
+      <section class="appointments">
+        <div class="today-appointments">
+          <h3>Today's Appointments</h3>
+          <ul>
+            <li><span class="name">Beth Mccoy</span><span class="status ongoing">On Going</span></li>
+            <li><span class="name">Evan Henry</span><span class="time">12:00</span></li>
+            <li><span class="name">Dwight Murphy</span><span class="time">14:00</span></li>
+            <li><span class="name">Bessie Alexander</span><span class="time">14:00</span></li>
+          </ul>
+        </div>
+
+        <div class="patient-details">
+          <h3>Next Patient Details</h3>
+          <div class="card">
+            <div class="card-header">
+              <img src="d4.jpeg" alt="Patient">
+              <div>
+                <h4>Beth Mccoy</h4>
+                <p>7235 Avondale Ave Pasadena, Oklahoma</p>
+              </div>
+            </div>
+            <div class="card-body">
+              <p><strong>D.O.B:</strong> 29 February 1999</p>
+              <p><strong>Sex:</strong> Female</p>
+              <p><strong>Height:</strong> 172 cm</p>
+              <p><strong>Weight:</strong> 56 kg</p>
+              <p><strong>Last Appointment:</strong> 02 Jan 2020</p>
+              <p><strong>Register Date:</strong> 15 Dec 2018</p>
+              <div class="tags">
+                <span class="tag yellow">Asthma</span>
+                <span class="tag green">Hypertension</span>
+                <span class="tag pink">Asam Urat</span>
+              </div>
+              <div class="card-actions">
+                <a href="#" class="btn phone">📞 (308) 555-0121</a>
+                <a href="#" class="btn">📁 Documents</a>
+                <a href="#" class="btn">💬 Chat</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
+

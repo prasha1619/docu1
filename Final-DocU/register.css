@@ -1,0 +1,145 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Background */
+body {
+  background: linear-gradient(135deg, #74ebd5, #acb6e5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Wrapper */
+.register-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+/* Registration Card */
+.register-card {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  padding: 25px 30px;
+  width: 340px;
+  text-align: center;
+  animation: fadeIn 0.8s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Logo */
+.logo img {
+  width: 60px;
+  margin-bottom: 10px;
+}
+
+/* Titles */
+h2 {
+  color: #333;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.subtitle {
+  color: #666;
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+
+/* Form Groups */
+.form-group {
+  text-align: left;
+  margin-bottom: 14px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: #444;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 13px;
+  transition: 0.2s;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: #74ebd5;
+  box-shadow: 0 0 4px rgba(116, 235, 213, 0.4);
+  outline: none;
+}
+
+/* Inline Fields */
+.form-inline {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.form-group.small {
+  flex: 1;
+}
+
+/* Button */
+.register-btn {
+  background: linear-gradient(90deg, #74ebd5, #9face6);
+  color: #fff;
+  border: none;
+  padding: 10px;
+  width: 100%;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.register-btn:hover {
+  background: linear-gradient(90deg, #9face6, #74ebd5);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(116, 235, 213, 0.4);
+}
+
+/* Login Link */
+.login-link {
+  margin-top: 12px;
+  font-size: 13px;
+  color: #666;
+}
+
+.login-link a {
+  color: #4a7bd8;
+  font-weight: 500;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 400px) {
+  .register-card {
+    width: 90%;
+    padding: 20px;
+  }
+}

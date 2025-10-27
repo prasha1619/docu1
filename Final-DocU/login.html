@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | HealthCare Portal</title>
+  <link rel="stylesheet" href="login.css">
+</head>
+<body>
+  <div class="login-page">
+    <!-- Logo Section -->
+    <div class="logo">
+      <img src="name.svg" alt="Clinic Logo">
+      <h1>HealthCare Portal</h1>
+    </div>
+
+    <!-- Two Divisions -->
+    <div class="login-container">
+      <!-- Doctor Login -->
+      <div class="login-box doctor-box">
+        <h2>Doctor Login</h2>
+        <form>
+          <div class="form-group">
+            <label for="doctorEmail">Email</label>
+            <input type="email" id="doctorEmail" placeholder="Enter your email" required>
+          </div>
+
+          <div class="form-group">
+            <label for="doctorPassword">Password</label>
+            <input type="password" id="doctorPassword" placeholder="Enter your password" required>
+          </div>
+
+          <button type="submit" class="login-btn">Login</button>
+        </form>
+      </div>
+
+      <!-- Patient Login -->
+      <div class="login-box patient-box">
+        <h2>Patient Login</h2>
+        <form>
+          <div class="form-group">
+            <label for="patientEmail">Email</label>
+            <input type="email" id="patientEmail" placeholder="Enter your email" required>
+          </div>
+
+          <div class="form-group">
+            <label for="patientPassword">Password</label>
+            <input type="password" id="patientPassword" placeholder="Enter your password" required>
+          </div>
+
+          <button type="submit" class="login-btn">Login</button>
+          <p class="register-link">
+            New patient? <a href="register.html">Register here</a>
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+

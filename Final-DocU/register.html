@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Patient Registration</title>
+  <link rel="stylesheet" href="register.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="register-wrapper">
+    <div class="register-card">
+      <div class="logo">
+        <img src="name.svg" alt="Clinic Logo" />
+      </div>
+
+      <h2>Patient Registration</h2>
+      <p class="subtitle">Create your account to continue</p>
+
+      <form>
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" placeholder="Enter your full name" required />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="Enter your email" required />
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" placeholder="Enter your phone number" required />
+        </div>
+
+        <div class="form-inline">
+          <div class="form-group small">
+            <label for="dob">DOB</label>
+            <input type="date" id="dob" required />
+          </div>
+
+          <div class="form-group small">
+            <label for="gender">Gender</label>
+            <select id="gender" required>
+              <option value="">Select</option>
+              <option>Male</option>
+              <option>Female</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="address">Address</label>
+          <textarea id="address" placeholder="Enter your address" rows="2" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="Create a password" required />
+        </div>
+
+        <button type="submit" class="register-btn">Register</button>
+
+        <p class="login-link">Already registered? <a href="login.html">Login</a></p>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

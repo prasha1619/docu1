@@ -1,0 +1,137 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #5b86e5, #36d1dc);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* Page Wrapper */
+.login-page {
+  width: 80%;
+  max-width: 1000px;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  text-align: center;
+}
+
+/* Logo Section */
+.logo img {
+  width: 80px;
+}
+
+.logo h1 {
+  font-size: 22px;
+  color: #333;
+  margin: 10px 0 30px;
+}
+
+/* Container for both login boxes */
+.login-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+/* Each box */
+.login-box {
+  flex: 1;
+  min-width: 300px;
+  background: #f9f9f9;
+  border-radius: 15px;
+  padding: 25px 30px;
+  text-align: left;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+}
+
+.login-box h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Doctor and Patient box styling */
+.doctor-box {
+  border-top: 5px solid #5b86e5;
+}
+
+.patient-box {
+  border-top: 5px solid #36d1dc;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+input:focus {
+  border-color: #36d1dc;
+  outline: none;
+  box-shadow: 0 0 5px rgba(54, 209, 220, 0.3);
+}
+
+/* Buttons */
+.login-btn {
+  width: 100%;
+  background: #36d1dc;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.login-btn:hover {
+  background: #5b86e5;
+}
+
+/* Register link */
+.register-link {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.register-link a {
+  color: #36d1dc;
+  text-decoration: none;
+}
+
+.register-link a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .login-container {
+    flex-direction: column;
+  }
+}
+
