@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DocU — Doctor Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="nav-left">
+      <div class="logo-icon"></div>
+      <div class="logo-text"><img src="name.svg"> </div>
+    </div>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <button class="btn-cta" onclick="logout()"><a href="index.html"> Log Out</a></button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="dashboard-section">
+      <h2>Doctor Dashboard</h2>
+      <p>Welcome, <span id="user-name">Loading...</span>!</p>
+      <div class="features-grid">
+        <div class="feature-card">
+          <h3>Specialization</h3>
+          <div id="specialization"><doctorData class="specialization"></doctorData></div>
+        </div>
+        <div class="feature-card">
+          <h3>Appointments</h3>
+          <div id="appointments">Loading...</div>
+        </div>
+        <div class="feature-card">
+          <h3>Schedule</h3>
+          <div id="schedule">Loading...</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase.js"></script>
+  <script>
+    async function loadDashboard() {
+      console.log('🔄 Loading doctor dashboard...');
+      
+      try {
+        // Check authentication
+        const { data: { user }, error: authError } = await supabase.auth.getUser();
+        
+        if (authError || !user) {
+          console.error('❌ Not authenticated:', authError);
+          alert('Please log in first');
+          window.location.href = 'index.html';
+          return;
+        }
+
+        console.log('✅ Authenticated user:', user.id);
+
+        // Fetch doctor data DIRECTLY from doctors table (NO users table!)
+        const { data: doctorData, error: doctorError } = await supabase
+          .from('doctors')
+          .select('*')
+          .eq('user_id', user.id)
+          .single();
+
+        if (doctorError) {
+          console.error('❌ Error fetching doctor data:', doctorError);
+          alert('Error loading dashboard: ' + doctorError.message);
+          window.location.href = 'index.html';
+          return;
+        }
+
+        if (!doctorData) {
+          console.error('❌ No doctor data found');
+          alert('Doctor profile not found');
+          window.location.href = 'index.html';
+          return;
+        }
+
+        console.log('✅ Doctor data loaded:', doctorData);
+
+        // Display data
+        document.getElementById('user-name').textContent = doctorData.name || 'Doctor';
+        document.getElementById('specialization').textContent = doctorData.specialization || 'Not set';
+        
+        const appointments = doctorData.appointments || [];
+        document.getElementById('appointments').innerHTML = appointments.length > 0
+          ? appointments.map(app => <p>📅 ${app.date || 'TBD'} - ${app.patient || 'Patient'} (${app.status || 'Pending'})</p>).join('')
+          : '<p>No appointments scheduled</p>';
+        
+        const schedule = doctorData.schedule || [];
+        document.getElementById('schedule').innerHTML = schedule.length > 0
+          ? schedule.map(s => <p>📆 ${s.day || 'Day'}: ${s.time || 'Time'}</p>).join('')
+          : '<p>No schedule set</p>';
+
+      } catch (error) {
+        console.error('❌ Dashboard error:', error);
+        alert('Error loading dashboard: ' + error.message);
+      }
+    }
+
+    async function logout() {
+      console.log('🔄 Logging out...');
+      await supabase.auth.signOut();
+      localStorage.removeItem('user');
+      window.location.href = 'index.html';
+    }
+
+    // Load dashboard on page load
+    loadDashboard();
+
+  </script>
+</body>
+</html>

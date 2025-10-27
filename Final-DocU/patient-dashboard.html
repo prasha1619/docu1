@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DocU — Patient Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="nav-left">
+      <div class="logo-icon">D</div>
+      <div class="logo-text">DocU</div>
+    </div>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <button class="btn-cta" onclick="logout()">Log Out</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="dashboard-section">
+      <h2>Patient Dashboard</h2>
+      <p>Welcome, <span id="user-name">User</span>!</p>
+      <div class="features-grid">
+        <div class="feature-card">
+          <h3>Medical History</h3>
+          <div id="medical-history">Loading...</div>
+        </div>
+        <div class="feature-card">
+          <h3>Appointments</h3>
+          <div id="appointments">Loading...</div>
+        </div>
+        <div class="feature-card">
+          <h3>Prescriptions</h3>
+          <div id="prescriptions">Loading...</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase.js"></script>
+  <script>
+    async function loadDashboard() {
+      console.log('🔄 Loading patient dashboard...');
+      try {
+        // Check if user is authenticated
+        const { data: { user }, error: authError } = await supabase.auth.getUser();
+        if (authError || !user) {
+          console.error('❌ Auth error:', authError);
+          alert('Please log in');
+          window.location.href = 'index.html';
+          return;
+        }
+        console.log('✅ Authenticated user:', user.id, user.email);
+
+        // Fetch user data
+        const { data: userData, error: userError } = await supabase
+          .from('users')
+          .select('name, role')
+          .eq('id', user.id)
+          .single();
+
+        if (userError) {
+          console.error('❌ User fetch error:', userError);
+          alert('Error fetching user: ' + userError.message);
+          return;
+        }
+        console.log('✅ User data:', userData);
+        document.getElementById('user-name').textContent = userData.name;
+
+        // Verify role
+        if (userData.role !== 'patient') {
+          console.error('❌ User is not a patient:', userData.role);
+          alert('Access denied: Not a patient account');
+          window.location.href = 'index.html';
+          return;
+        }
+
+        // Fetch patient data
+        const { data, error } = await supabase
+          .from('patients')
+          .select('medical_history, appointments, prescriptions')
+          .eq('user_id', user.id)
+          .single();
+
+        if (error) {
+          console.error('❌ Patient data fetch error:', error);
+          alert('Error loading dashboard: ' + error.message);
+          return;
+        }
+        console.log('✅ Patient data:', data);
+
+        // Display data
+        const medicalHistory = data.medical_history || [];
+        document.getElementById('medical-history').innerHTML = medicalHistory.length
+          ? medicalHistory.map(item => <p>${item.condition} (${item.date})</p>).join('')
+          : 'No medical history';
+
+        const appointments = data.appointments || [];
+        document.getElementById('appointments').innerHTML = appointments.length
+          ? appointments.map(app => <p>Appointment on ${app.date} (Status: ${app.status})</p>).join('')
+          : 'No appointments';
+
+        const prescriptions = data.prescriptions || [];
+        document.getElementById('prescriptions').innerHTML = prescriptions.length
+          ? prescriptions.map(p => <p>${p.medication} (${p.date})</p>).join('')
+          : 'No prescriptions';
+      } catch (error) {
+        console.error('❌ General error:', error);
+        alert('Error: ' + error.message);
+      }
+    }
+
+    async function logout() {
+      await supabase.auth.signOut();
+      localStorage.removeItem('user');
+      window.location.href = 'index.html';
+    }
+
+    loadDashboard();
+  </script>
+</body>
+</html>

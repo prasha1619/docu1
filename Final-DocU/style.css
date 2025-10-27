@@ -405,20 +405,16 @@ body {
 /* Modal */
 .auth-modal {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.6);
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 999;
 }
 
-.auth-modal.hidden {
-  display: none;
-}
+.auth-modal.hidden { display: none; }
 
 .auth-modal-content {
   background: white;
@@ -429,9 +425,7 @@ body {
   position: relative;
 }
 
-.auth-modal-content h2 {
-  margin-bottom: 15px;
-}
+.auth-modal-content h2 { margin-bottom: 15px; }
 
 .auth-modal-content input,
 .auth-modal-content select {
@@ -457,4 +451,45 @@ body {
   right: 20px;
   font-size: 25px;
   cursor: pointer;
+}
+.dashboard-section {
+  max-width: 1000px;
+  margin: 40px auto;
+  text-align: center;
+  padding: 20px;
+}
+
+.dashboard-section h2 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.dashboard-section p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.feature-card {
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.feature-card h3 {
+  font-size: 1.5rem;
+  color: #00b58c;
+  margin-bottom: 10px;
+}
+
+.feature-card div {
+  font-size: 1rem;
+  color: #333;
 }
