@@ -1,0 +1,222 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: #f4f7fb;
+  display: flex;
+  height: 100vh;
+}
+
+/* Dashboard Wrapper */
+.dashboard {
+  display: flex;
+  width: 100%;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 250px;
+  background: linear-gradient(135deg, #36d1dc, #5b86e5);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 30px;
+}
+
+
+.logo img {
+  width: 60px;
+  border-radius: 50%;
+  stroke-width: 5px;
+  stroke: #856404;
+  width: 150px;
+  height: 50px;
+}
+
+.logo h2 {
+  margin-top: 10px;
+  font-size: 20px;
+}
+
+.menu {
+  list-style: none;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.menu li {
+  width: 100%;
+}
+
+.menu a {
+  display: block;
+  text-decoration: none;
+  color: white;
+  padding: 15px 25px;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.menu li.active a,
+.menu a:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-left: 5px solid white;
+}
+
+.logout {
+  color: #ffefef;
+}
+
+/* Main Content */
+.main-content {
+  flex: 1;
+  padding: 20px 40px;
+  overflow-y: auto;
+}
+
+/* Topbar */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.topbar h1 {
+  color: #333;
+}
+
+.topbar span {
+  color: #36d1dc;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: 2px solid #36d1dc;
+}
+
+/* Cards */
+.cards {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  flex: 1;
+  min-width: 250px;
+}
+
+.card h3 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* Table */
+.appointments {
+  background: white;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  
+}
+
+.appointments h2 {
+  margin-bottom: 15px;
+  color: #333;
+  
+}
+
+table {
+  width: 69%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+}
+
+th {
+  background: #36d1dc;
+  color: white;
+  
+}
+
+tr:nth-child(even) {
+  background: #f8f8f8;
+}
+
+.status {
+  padding: 5px 10px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.status.completed {
+  background: #c8f7c5;
+  color: #2e7d32;
+}
+
+.status.pending {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.status.cancelled {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .dashboard {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+    padding: 10px;
+  }
+
+  .menu {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .menu a {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .cards {
+    flex-direction: column;
+  }
+}
+.profile{
+  width: 1000;
+}
